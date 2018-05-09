@@ -1,0 +1,65 @@
+{
+  "name": "mithril-redux-bootstrap",
+  "version": "0.0.1",
+  "description": "Mithril.js + Redux Boilerplate with Bootstrap4",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "install:bootstrap": "cd ./bootstrap && npm install && gem install bundler && bundler install",
+    "postinstall": "npm run install:bootstrap && npm install -g webpack-dev-server",
+    "start": "set NODE_ENV=development && npm run watch",
+    "watch": "npm-run-all -p watch:*",
+    "watch:app": "webpack-dev-server --config ./config/webpack.config.dev.js",
+    "watch:bootstrap": "cd ./bootstrap && npm run watch-fast",
+    "build": "npm-run-all build:*",
+    "build:app": "set NODE_ENV=production && webpack -p --config ./config/webpack.config.production.js",
+    "build:bootstrap": "cd ./bootstrap && npm run dist",
+    "lint:bootstrap": "cd ./boostrap && npm run css-lint"
+  },
+  "author": "romot",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.5",
+    "mithril": "^1.1.3",
+    "redux-thunk": "^2.2.0",
+    "webpack": "^3.5.6",
+    "webpack-merge": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "deepmerge": "^1.5.1",
+    "eslint": "^4.7.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "7.7.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "jest": "^21.2.1",
+    "json-loader": "^0.5.7",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "svg-url-loader": "^2.1.1",
+    "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
+    "url-loader": "^0.5.9",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "app/src/**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ]
+  }
+}
